@@ -1,0 +1,38 @@
+body{ 
+    margin: auto;
+    text-align: center;
+    background-color: rgb(128, 128, 246);
+
+
+}
+
+h1{
+    font-size: 100px;
+    margin: 10px auto;
+    color: aqua;
+
+}
+h2{
+    display: inline-block;
+    margin-left: 100px;
+    color: aqua;
+}
+/* img{
+    width: ;
+} */
+.butn{
+width: 100px;
+height: 50px;
+background-color:rgb(51, 120, 152);
+border: white;
+border-radius: 5px;
+
+}
+
+#d1{
+    justify-content: center;
+    display: flex;
+    
+
+
+}

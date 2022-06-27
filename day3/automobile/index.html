@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>TATA Automobile Inheritance Model</h1>
+    
+</body>
+
+</html>
+<script>
+    function inheritance(b, t, p) {
+        this.brand = b;
+        this.tyers = t;
+        this.price = p;
+    }
+    var obj = new inheritance("tata", 4,150000);
+    console.log(obj);
+    var tata1 = Object.create(obj);
+    tata1.color = "black";
+    tata1.rupees = "150000";
+    var tata2 = Object.create(obj);
+    tata2.color = "white";
+    tata2.rupees = "160000";
+
+    console.log(tata1, tata2);
+</script>

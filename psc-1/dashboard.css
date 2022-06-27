@@ -1,0 +1,27 @@
+#container{
+          
+    display: grid;
+    grid-template-columns: repeat(4,1fr); 
+     grid-template-rows:  auto;
+     gap: 20px;
+}
+#container>div{
+    
+    
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 10px;
+}
+#container>div>img{
+    width: 100%;
+    
+    margin-bottom: 10px;
+}
+#container>div>p{
+    margin-top: -10px;
+   text-align: center;
+   
+}
+#container>div>button{
+   margin-left: 80px;
+    margin-top: -20px;
+}
