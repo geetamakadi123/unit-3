@@ -4,9 +4,13 @@
 function append(){
     let data = JSON.parse(localStorage.getItem("coffee"))
     let menu = document.getElementById('bucket')
+    var total = 0;
     menu.innerHTML = null
+   
     console.log(data)
     data.forEach(function(el,index){
+        total=total+el.price;
+        document.getElementById("total_amount").innerText=total;
         let box = document.createElement('div')
 
         let img = document.createElement('img')
@@ -49,8 +53,9 @@ function append(){
         }
         return i!= index
     })
-    localStorage.setItem('coffee',JSON.stringify(newdata))
     append()
+    localStorage.setItem('coffee',JSON.stringify(newdata))
+    
  }
 
 
