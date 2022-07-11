@@ -55,28 +55,38 @@ async function picture(){
   }
 
 }
-function append(data){
+const append = (videos) =>{
 
 
   movies_div.innerHTML=null;
 
-    data.forEach(function (el,index){
+    videos.forEach(({Poster,Title,index}) =>{
         let box =creat("div");
         box.id="data"
         let image1 = creat("img");
-        image1.src=el.Poster
-     
+        image1.src=Poster
+        let title = document.createElement("h4")
+        title.innerText = Title;
+        let bttn = document.createElement("button")
+        bttn.innerText = "BookNow"
+        bttn.setAttribute("class","book_now")
+     let data = {
+      Poster, Title
+     }
+     bttn.onclick = () =>{
+      addToCart(data)
+     }
 
-let para = creat("p");
-para.innerText=el.Title;
-let bttn=document.createElement("button");
-bttn.setAttribute("class","book_now");
-bttn.innerText="Book now"
-bttn.addEventListener("click",function(){
-  addToCart(el,index)
-})
+// let para = creat("p");
+// para.innerText=Title;
+// let bttn=document.createElement("button");
+// bttn.setAttribute("class","book_now");
+// bttn.innerText="Book now"
+// bttn.addEventListener("click",function(){
+//   addToCart(el,index)
+
          
-         box.append(image1,para,bttn);
+         box.append(image1,title,bttn);
          movies.append(box);
 
     
@@ -85,10 +95,10 @@ bttn.addEventListener("click",function(){
    
 }
 
-function addToCart(el,index){
+const addToCart = (x) =>{
 // console.log("picture")
   // data.push(el);
-  localStorage.setItem("movie",JSON.stringify(el))
+  localStorage.setItem("movie",JSON.stringify(x))
   window.location.href="checkout.html"
   
   }
