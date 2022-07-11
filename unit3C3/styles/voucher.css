@@ -1,0 +1,26 @@
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: aqua;
+    align-items: center;
+  }
+  a{
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+  }
+  #voucher_list{
+      margin-top: 20px;
+      display: grid;
+      
+      grid-template-columns: repeat(4,1fr);
+      grid-auto-rows: auto;
+      gap:20px;
+
+  }
+  #voucher_list>div{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  }
+  #voucher_list>div>img{
+    width: 100%;
+  }

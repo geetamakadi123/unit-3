@@ -1,0 +1,15 @@
+#navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: aqua;
+  }
+  a{
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+  }
+  #wallet_balance{
+    font-size: 26px;
+    font-weight: bold;
+  }
