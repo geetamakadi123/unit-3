@@ -1,15 +1,15 @@
 // Store the wallet amount to your local storage with key "amount"
 // helper
 let read = (id)=>{
-    return document.getElementById(id).value
+    return document.getElementById(id).value //id="amount=>input
 }
 
 let creat = (id)=>{
-   return document.createElement(id);
+   return document.createElement(id);//button
 }
 
 let get = (id)=>{
-return document.getElementById(id);
+return document.getElementById(id);//button "add_to_wallet";
 }
 
 get("add_to_wallet").addEventListener("click",add)
@@ -20,7 +20,7 @@ function add(){
    let amount1= read("amount");
 
   //console.log(amount1)
-const money = localStorage.getItem('amount') || 0;
+  const money = localStorage.getItem("amount") || [];
   localStorage.setItem("amount",Number(amount1)+Number(money));
      //console.log(Number(amount1)+Number(money))
 

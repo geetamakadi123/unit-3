@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>hotstar1</title>
+    <style>
+       
+        #impbox {
+            padding: 5px;
+            width: 35%;
+            
+        }
+
+        input {
+            width: 100%;
+        }
+
+        #container {
+            width: 100%;
+            border: 1px purple;
+            background-color:beige;
+            overflow: scroll;
+            padding: 5px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="impbox">
+        <input type="text" oninput="debounce(main,100)" id="input" placeholder="Search movies">
+        <div id="container"></div>
+    </div>
+</body>
+
+</html>
+
+<script >
+    async function searchingData(input) {
+
+try {
+   const url = `https://www.omdbapi.com/?s=${input}&apikey=b11485a6`;
+
+    let res = await fetch(url);
+    let data = await res.json();
+
+    return data.Search;
+
+}
+
+catch (error) {
+    console.log('error ', error);
+}
+
+}
+async function main() {
+let input = document.querySelector('#input').value;
+
+let res = searchingData(input);
+let data = await res;
+
+append(data);
+}
+
+function append(data) {
+
+if (data == undefined) {
+    return false;
+}
+
+let container = document.querySelector('#container');
+
+data.forEach(function (el) {
+
+    let title = document.createElement("p");
+    title.innerText = el.Title;
+     container.append(title);
+
+});
+
+}
+
+let id;
+function debounce(func, delay) {
+
+if (id) {
+    clearTimeout(id);
+}
+
+id = setTimeout(function () {
+    func();
+}, 1000);
+
+} 
+</script>

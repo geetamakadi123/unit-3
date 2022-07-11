@@ -5,20 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movies</title>
-  </head>
-
-<style>
- /* #movies{
-display: grid;
-grid-template-columns: repeat(4,1fr);
-gap:20px;
-
- }
-#data{
-  text-align: center;
-} */
-
-#navbar{
+    <style>
+       #navbar{
        display: flex;
        justify-content: space-between;
       }
@@ -43,22 +31,18 @@ gap:20px;
         width:100%;
         height: 200px;
       }
-
-
-
-
-</style>
-
+    </style>
+  </head>
   <body>
     <div id="navbar">
       <h1>Movie List</h1>
       <!-- Display the wallet amount here inside h1 tag with id as "wallet". Note only amount, no extra text. Like 500 not Rs 500 -->
-   <h1 id="wallet">0</h1>
+      <h1 id="wallet"></h1>
     </div>
     <div id="search_bar">
       <!-- input box for searching movies with id as "search" -->
-      <input oninput="searchMovies()" type="text" id="search">
       <!-- No button should be there for searching movies, it should search with input  -->
+      <input oninput="search()" id="search" type="text" placeholder="Search..."  />
     </div>
 
     <div id="movies">
@@ -68,4 +52,4 @@ gap:20px;
     </div>
   </body>
 </html>
-<script src="movies.js"></script>
+<script src="scripts/movies.js"></script>

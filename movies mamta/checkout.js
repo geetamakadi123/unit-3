@@ -12,9 +12,9 @@ function display1({Poster,Title}){
             box.id="data"
             let image1 =document.createElement("img");
             image1.src=Poster
-            let p =document.createElement("p");
-            p.innerText=Title; 
-            box.append(image1,p);
+            let para =document.createElement("p");
+            para.innerText=Title; 
+            box.append(image1,para);
              
    
             movies.append(box);
@@ -41,16 +41,16 @@ let confirm=document.getElementById("confirm").addEventListener("click",confirmm
 
 function confirmm(){
     let tickets=document.getElementById("number_of_seats").value;
-    let n_tickets=tickets*100;
-    if(n_tickets<=display){
-        console.log(n_tickets,typeof(display))
-        let amount=display-n_tickets;
+    let numtickets=tickets*100;
+    if(numtickets<=display){
+        console.log(numtickets,typeof(display))
+        let amount=display-numtickets;
         localStorage.setItem("amount",JSON.stringify(amount));
-        alert("Tickets Booked")
+        alert("Booking Successful!")
         window.location.reload();
     }
     else{
-        alert("Insufficient Balance")
+        alert("Insufficient Balance!")
         window.location.reload();
 
     }

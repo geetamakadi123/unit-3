@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        #impbox {
+            padding: 5px;
+            width: 35%;
+            
+        }
+
+         #container {
+            border: 1px purple;
+            background-color:beige;
+            overflow: scroll;
+            padding: 5px;
+            height: 300px;
+        }
+        #box{
+            width:30%;
+            margin: auto;
+            display: grid;
+
+        }
+        img{
+            width:100%;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id = "impbox"></div>
+
+    <input oninput="debounce(main,1000)" type="text" id="input" placeholder="search movie">
+</div>
+
+    <div id="container"></div>
+
+    <div id="box"></div>
+
+
+</body>
+</html>
+<script>
+    let id;
+    let container=document.getElementById('container')
+    let box=document.getElementById('box')
+    async function searchingData(input){
+
+
+        try{
+            let url=`https://www.omdbapi.com/?s=${input}&apikey=b11485a6`;
+            let res = await fetch(url)
+            let data = await res.json();
+            return data.Search;
+
+
+        }
+        catch(error){
+            console.log('error',error)
+        }
+    }
+    function append(movies){
+        container.innerText=null;
+        box.innerText=null;
+
+        if(movies===undefined)
+        {
+            return false;
+        }
+        movies.forEach(function(el){
+
+            let p= document.createElement("p")
+            p.innerText=  el.Title
+            p.style.color="green"
+
+            container.append(p)
+
+            let image=document.createElement("img")
+            image.src=el.Poster;
+
+
+
+            let name=document.createElement("h2")
+            name.innerText= "Name :"+el.Title;
+            name.style.color="purple"
+            console.log(name)
+
+            let type=document.createElement("h3");
+            type.innerText="Type :"+el.Type;
+            type.style.color="black"
+
+            let year=document.createElement("h3")
+            year.innerText="Year :"+el.Year;
+            year.style.color="yellow"
+
+            let imdb=document.createElement("p")
+            imdb.innerText="Imdb :"+el.imdbID;
+            imdb.style.color="green"
+            container.append(p);
+
+            box.append(image,name,type,year,imdb)
+        });
+    }
+
+    async function main(){
+        let input = document.getElementById("input").value;
+        let find = searchingData(input)
+        let data = await find;
+        console.log(data)
+        append(data)
+    }
+
+    function debounce(func,delay){
+        if(id)
+        {
+            clearTimeout(id)
+        }
+        id=setTimeout(function(){
+            func();
+        },delay)
+    }
+</script> 

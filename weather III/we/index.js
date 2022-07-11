@@ -6,7 +6,7 @@
 function getData(){
     let city = document.getElementById("query").value;
 
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid={your_api}`
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=mamata yaha pe tumhari api key dalana`
 
     fetch(url)
     .then(function (res){
