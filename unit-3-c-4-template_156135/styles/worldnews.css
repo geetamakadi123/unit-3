@@ -1,0 +1,38 @@
+#news_result{
+
+    margin: auto;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#news_result>.news
+{
+    display: flex;
+   
+}
+
+#news_result>.news>img
+{
+    width: 20%;
+    height: 100%;
+    margin-right: 10px;
+}
+
+#navbar
+{
+    margin: auto;
+    width: 90%;
+   display: flex;
+   justify-content: space-between; 
+   align-items: center;
+}
+
+#navbar>div{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+

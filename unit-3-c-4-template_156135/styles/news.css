@@ -1,0 +1,14 @@
+#navbar
+{
+    margin: auto;
+    width: 90%;
+   display: flex;
+   justify-content: space-between; 
+   align-items: center;
+}
+
+#navbar>div{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+}
