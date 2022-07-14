@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="comman.css">
+
+    <link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+<div id="navbar"></div>
+<div id="search">
+Search
+<input type="search" oninput="food()" id="search1" placeholder="search your food">
+</div>
+
+<div id="result"></div>
+    
+</body>
+</html>
+<script type="module">
+    import navbar from"./components/navbar.js"
+
+document.getElementById("navbar").innerHTML=navbar()
+
+</script>
+
+
+
+<script>
+    async function food(){
+        let bigdata=document.getElementById("search1").value
+
+        let url=`https://www.themealdb.com/api/json/v1/1/search.php?s=${bigdata}`
+
+        let res=await fetch(url)
+
+let data=await res.json()
+
+
+append(data.meals)
+
+console.log(data.meals)
+
+    }
+
+    let result=document.getElementById("result")
+
+
+
+    function append(data){
+
+        result.innerHTMl=null
+
+        data.forEach((el)=>{
+
+       
+
+
+        let box=document.createElement("div")
+
+        let img=document.createElement("img")
+
+        img.src=el.strMealThumb;
+
+       let h3=document.createElement("h2")
+
+       h3.innerText=el.strMeal;
+
+       let h4=document.createElement("h4")
+
+       h4.innerText=el.strInstructions;
+
+
+       box.append(img,h3,h4)
+
+       result.append(box)
+    })
+
+
+    }
+
+</script>

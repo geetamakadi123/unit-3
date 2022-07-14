@@ -1,12 +1,12 @@
-#navbar
-{
-    margin: auto;
-    width: 90%;
-   display: flex;
-   justify-content: space-between; 
-   align-items: center;
+#navbar{
+    justify-content: space-between;
+    height:70px;
+    width:100%;
+    background-color: aqua;
+    font-size: 20px;
+     display:flex;
+     margin: auto;
 }
-
 #navbar>div{
     display: flex;
     justify-content: space-evenly;
