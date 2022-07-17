@@ -12,6 +12,10 @@
     display: flex;
    
 }
+/* .news>img{
+    height: 300px;
+    width:300px;
+} */
 
 #news_result>.news>img
 {

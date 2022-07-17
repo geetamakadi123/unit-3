@@ -43,13 +43,18 @@ sidedisplay(userdata,side)
      
         let image=document.createElement("img");
         image.src=news.urlToImage;
+        image.style.height="300px";
+        image.style.width="400px";
+        image.style.marginLeft="200px";
 
 
         let title=document.createElement("h3");
         title.innerText=news.title;
+        title.style.marginLeft="200px";
         
         let author=document.createElement("h4");
          author.innerText=news.description;
+         author.style.marginLeft="200px";
         
 
        
