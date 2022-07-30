@@ -1,0 +1,48 @@
+
+h2{
+    
+    font-weight: bold;
+    
+}
+#cont{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    width: 35%;
+    margin: auto;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgb(42, 114, 248);
+    text-align: center;
+    border-radius: 10px;
+}
+
+#info{
+    display: flex;
+      width: 30%;
+       margin: auto;
+      gap: 25px;
+      
+      
+  }
+#container{
+    display: flex;
+    width: 100%;
+    margin: auto;
+    gap: 20px;
+}
+
+        #city{
+            margin-top: 20%;
+            height: 20px;
+            width: 30%;
+            border-radius: 2px;
+        }
+        
+     #search{
+        margin-top: 20%;
+        height: 30px;
+        width: 300px;  
+        border-radius: 5px;
+        color: black;
+    } 
+    

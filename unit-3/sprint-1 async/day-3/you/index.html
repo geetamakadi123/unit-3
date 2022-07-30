@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function myArray() {
+
+        Object.defineProperty(this, "length", {
+            value: 0,
+            writable: true,
+            enumerable: false,
+        })
+
+
+        this.length = arguments.length;
+        for (let i = 0; i < this.length; i++) {
+
+            this[i] = arguments[i]
+
+        }
+    }
+    let a2 = new myArray("a", "b", "c", "d", "e", "f")
+    myArray.prototype.मुझेभी_लोना = function (value)  //push
+    {
+        let index = this.length
+        this[index] = value;
+        this.length++
+    }
+
+   
+
+    
+    myArray.prototype.निकालो_इसको = function () //pop
+    {
+        let index = this.length - 1;
+
+        delete this[index];
+        this.length--
+
+    }
+
+
+  
+
+
+    myArray.prototype.उपरवाला = function () //top
+    {
+        let index = this.length - 1;
+        return a2[index];
+
+
+    }
+
+
+    // console.log("a2", Object.values(a2))
+    myArray.prototype.छापो_मेरेको = function () //print arrray
+    {
+        var arr = []
+        let index = this.length - 1;
+        for (var i = 0; i < this.length; i++) {
+            arr.push(this[i])
+        }
+        return arr
+    }
+
+
+
+
+    ///
+
+    myArray.prototype.उलटा_छापो = function () //print reverse array
+    {
+        var arr = []
+        let index = this.length - 1;
+        for (var i = this.length - 1; i >= 0; i--) {
+            arr.push(this[i])
+        }
+        return arr
+    }
+
+
+    // 
+    myArray.prototype.लेंग्थ = function () //print reverse array
+    {
+        var arr = []
+        let index = this.length - 1;
+
+        return index
+    }
+
+
+
+    a2.मुझेभी_लोना("g")
+    console.log('a2:', a2)
+    console.log("मुझेभी_लोना", Object.values(a2)) //push
+
+    a2.निकालो_इसको()
+    console.log("निकालो_इसको", Object.values(a2)) //pop
+
+
+    var x = a2.उपरवाला()  //top
+    console.log("उपरवाला", x)
+
+    var arr2 = a2.छापो_मेरेको()  //print
+    console.log("छापो_मेरेको", arr2)
+
+    var arr = a2.उलटा_छापो() //reverse
+    console.log("उलटा_छापो", arr)
+
+   var len = a2.लेंग्थ() //length
+    console.log("लेंग्थ", len)
+
+
+
+</script>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Dashboard</title>
+<style>
+         *{ margin: 0px;
+            padding: 0px;
+        }
+        #ted
+        {
+            
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        #nav
+        {
+        
+            height: 60px;
+            width: 100%;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+    tr{
+        text-align: center;
+        /* justify-content: space-around; */
+        width: 100%;
+        /* display: flex; */
+    }
+    th{
+        background-color: aqua;
+        height: 50px;
+        color: black;
+        width: 40px;
+        border: 1px solid black;
+    }
+    table{
+        border-collapse:collapse ;
+        width: 80%;
+        margin: auto;
+        height: 50px;
+        background-color: white;
+        opacity: 0.8;
+    }
+    td{
+        height: 160px;
+        border: 1px solid black;
+        font-size: 22px;
+    }
+    tr>td:nth-child(4)>img{
+        /* background-color: red; */
+        /* width:fit-content; */
+        height: 100%;
+    }
+    tr>td:nth-child(6){
+      color: red;
+
+    }
+
+
+</style>
+</head>
+<body>
+    <select name="" id="">
+        <option value="">filter By batch</option>
+    </select>
+    <div id="nav">
+        <span id="b1"></span>
+        <span id="b2"></span>
+        <span id="b3"></span>
+        <span id="b4"></span>
+        <span onclick="dashboard()">Homepage</span>
+    </div>
+    <!-- <div id="tead" > -->
+        <div id="ted">
+        <table>
+    <thead>
+        <tr>
+            <th>NAME</th>
+            <th>COURSE</th>
+            <th>UNIT</th>
+            <th>IMAGE</th>
+            <th>BATCH</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="container">
+       
+    </tbody>
+</div>
+</table>
+<!-- </div> -->
+</body>
+</html>
+
+<script>
+
+
+let data=JSON.parse(localStorage.getItem("database"))||[];
+let trash=JSON.parse(localStorage.getItem("trash"))||[]
+// navbar---started
+function reloas(){
+    let b1=document.getElementById("b1");
+    let b2 =document.getElementById("b2")
+    let b3 =document.getElementById("b3")
+    let b4 =document.getElementById("b4")
+
+let batch01=data.filter(function(el){
+    return el.batch=="batch01"
+})
+let batch02=data.filter(function(el){
+    return el.batch=="batch02"
+})
+let batch03=data.filter(function(el){
+    return el.batch=="batch03"
+})
+let batch04=data.filter(function(el){
+    return el.batch=="batch04"
+})
+b1.innerText=`BATCH-01  :   ${batch01.length}`
+b2.innerText=`BATCH-02  :   ${batch02.length}`
+b3.innerText=`BATCH-03  :   ${batch03.length}`
+b4.innerText=`BATCH-04  :   ${batch04.length}`
+}
+
+// <-------navbar ended---->
+
+
+
+let container=document.getElementById("container");
+display(data)
+function display(data){
+document.getElementById("container").innerHTML=""
+reloas()
+data.forEach(function(el,i){
+let tr1=document.createElement("tr");
+let td1=document.createElement("td");
+td1.innerHTML=el.name;
+
+let td2=document.createElement("td");
+td2.innerText=el.course
+
+let td3=document.createElement("td");
+td3.innerText=el.unit;
+
+let td4=document.createElement("td");
+let img=document.createElement("img")
+img.setAttribute("src",el.image)
+td4.append(img)
+
+let td5=document.createElement("td");
+td5.innerText=el.batch;
+
+let td6=document.createElement("td");
+
+td6.innerText="Remove";
+td6.addEventListener("click",function(){
+    deletefun(el,i)
+})
+
+
+tr1.append(td1,td2,td3,td4,td5,td6);
+container.append(tr1)
+
+
+})
+}
+function deletefun(el,i){
+    var trashed=data.filter(function(ele,zx){
+        return i==zx
+    })
+    trash.push(trashed);
+    localStorage.setItem("trash",JSON.stringify(trash));
+    console.log(trash);
+  var card= data.splice(i,1);
+   
+//   data.push(card);
+  display(data)
+localStorage.setItem("database",JSON.stringify(data));
+
+
+}
+
+function dashboard(){
+    window.location.href="index.html"
+}
+
+
+</script>

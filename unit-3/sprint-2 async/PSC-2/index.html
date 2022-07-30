@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUeTXhEMQpFkeaNTSdxYQOkETQrL8GL4_3L0fyYDTj706fS56-4KsFBSXwJl_xXJBte2I&usqp=CAU");
+            height: 100vh;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        input{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40px;
+            width: 3000px;
+            background-color: black;
+            color:black;
+            border-radius: 10px;
+            margin-top: 10%;
+            font-size: bold;
+        }
+        #results{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            height: auto;
+            width: 410px;
+            border-radius: 20px;
+            overflow-y: scroll;
+            text-align: center;
+            background-color: rgb(156, 153, 153);
+            color:black;
+            font-size: 20px;
+            
+        }
+        #query{
+          display: block;
+        margin-right: auto;
+         margin-left: auto;
+         height: 40px;
+         width: 400px;
+         color:black;
+         background-color: rgb(234, 241, 241);
+         border-radius: 10px;
+         border: none;
+      } 
+      p{
+          text-align: center;
+          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+          font-size: 20px;
+          font-weight: bold;
+          color:rgb(59, 28, 2);
+      }
+     
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="pinClipart.com_number-bond-clipart_562491.png"alt=""/>
+        <input type="text" id="query" oninput="debouncing(main,1000)"/>
+        <div id="results"></div>  
+
+    </div>
+    
+</body>
+</html>
+<script src="index.js"></script>

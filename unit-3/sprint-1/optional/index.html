@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #nav
+        {
+        
+            height: 60px;
+            width: 100%;
+            background-color: rgb(43, 43, 214);
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-weight: bold;
+            font-size: 22px;
+
+        }
+        #study>input,#study>select
+        {
+            /* background-color:antiquewhite; */
+            text-align: center;
+            align-items: center;
+            margin-top: 40px;
+            font-size: 20px;
+            height: 45px;
+            border: 1px solid;
+            width: 100%;
+            border-radius:10px ;
+        }
+        #study>input:nth-last-child(1){
+            background-color: rgb(71, 189, 213);
+            border-radius:50px ;
+        }
+        #study
+        {
+            align-items: center;
+            width: 400px;
+            height: auto;
+            padding: 100px;
+            margin-top: 20px;
+            margin: auto;
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            visibility: collapse;
+            text-align: center;
+            justify-content: center;
+          
+        }
+        #fo{
+            
+            background-repeat: no-repeat;
+            background-attachment: left ;
+            background-size: cover;
+        }
+        body
+        {
+            
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        #enter
+        {
+            text-align: center;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            margin: auto;
+          
+            width: 120px;
+            height: 40px;
+            align-items: center;
+            margin-top: 20%;
+        }
+        #close{
+            text-align: center;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            margin: auto;
+            background-color: antiquewhite;
+            width: 120px;
+            height: 40px;
+            align-items: center;
+          
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <span id="b1"></span>
+        <span id="b2"></span>
+        <span id="b3"></span>
+        <span id="b4"></span>
+        <span onclick="dashboard()">Dashboard</span>
+    </div>
+    <div>
+        <div id="enter"onclick="openfun()">
+           ENTER
+        </div>
+        <div>
+       <form id="study" onsubmit="funsub(event)" >
+        <input type="text" id="name" placeholder=" Enter Name">
+        <br>
+        <select id="course">
+            <option id="none" value="none">Select Course</option>
+            <option id="frontend" value="frontend">Frontend</option>
+            <option id="backend" value="backend">Backend</option>
+            <option id="FSW" value="Full-Stack-Web">Full-Stack-Web</option>
+        </select>
+        <input type="text"id="unit" placeholder=" Enter Unit">
+        <input type="url" id="image" placeholder=" Enter Image url">
+        <br>
+        <select id="batch">
+            <option id="nonee" value="none"> Select Batch</option>
+            <option id="Batch01"value="batch01">Batch01</option>
+            <option id="Batch01"value="batch02">Batch02</option>
+            <option id="Batch01"value="batch03">Batch03</option>
+            <option id="Batch01"value="batch04">Batch04</option>
+        </select>
+        <br>
+        <input type="submit">
+    </form>
+</div>
+   
+</div>
+</body>
+</html>
+<script>
+var data=JSON.parse(localStorage.getItem("database"))||[];
+
+
+
+    let b1=document.getElementById("b1");
+    let b2 =document.getElementById("b2")
+    let b3 =document.getElementById("b3")
+    let b4 =document.getElementById("b4")
+
+function funsub(event){
+event.preventDefault()
+
+    let form=document.getElementById("study");
+    let name=form.name.value;
+    let course=form.course.value;
+    let unit=form.unit.value;
+    let image=form.image.value;
+    let batch=form.batch.value;
+    let obj= new Pass(name,course,unit,image,batch);
+    data.push(obj);
+    localStorage.setItem("database",JSON.stringify(data))
+    // console.log(data)
+    window.location.reload();
+}
+
+function Pass(name,course,unit,image,batch){
+    this.name=name;
+    this.course=course;
+    this.unit=unit;
+    this.image=image;
+    this.batch=batch;
+}
+let batch01=data.filter(function(el){
+    return el.batch=="batch01"
+})
+let batch02=data.filter(function(el){
+    return el.batch=="batch02"
+})
+let batch03=data.filter(function(el){
+    return el.batch=="batch03"
+})
+let batch04=data.filter(function(el){
+    return el.batch=="batch04"
+})
+b1.innerText=`BATCH-01  :   ${batch01.length}`
+b2.innerText=`BATCH-02  :   ${batch02.length}`
+b3.innerText=`BATCH-03  :   ${batch03.length}`
+b4.innerText=`BATCH-04  :   ${batch04.length}`
+
+function dashboard(){
+    window.location.href="dashboard.html"
+}
+
+let study=document.getElementById("study")
+
+let enter=document.getElementById("enter")
+enter.innerText="ENTER"
+
+let open=0;
+function openfun(){
+    console.log(open)
+    if(open%2==0){
+        study.style.visibility="visible";
+        enter.setAttribute("id","close")
+        enter.innerText="CLOSE"
+        open++;
+    }
+else{
+    study.style.visibility="collapse";
+    enter.setAttribute("id","enter")
+    enter.innerText="ENTER"
+    open++
+}
+
+}
+
+</script>

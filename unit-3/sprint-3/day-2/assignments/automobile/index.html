@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    class Automobile{
+        constructor(t,e,s,m,l){
+            this.tyers=t
+            this.engine=e
+            this.seats=s
+            this.mirrior=m
+            this.light=l
+        }
+
+    }
+    let a1=new Automobile("TATA","best","better","QUALITY",46000,"concave")
+    console.log(a1);
+
+    class Newauto extends Automobile{
+        constructor(t,e,s,m,l,p,q){
+            super(t,e,s,m,l)
+
+            this.price=p
+            this.quality=q
+        }
+    }
+
+    let a2=new Newauto("TATA","best","better","QUALITY",46000,4880,"super")
+
+    console.log(a2)
+</script>

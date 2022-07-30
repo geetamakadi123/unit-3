@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    class stack{
+        constructor(){
+            this.length=0
+            this.stack=[]
+        }
+        //push in stack
+        push(ele){
+            this.stack[this.length]=ele
+            this.length++;
+        }
+
+        //pop 
+        pop(){
+            this.stack.pop()
+
+            this.length--;
+
+        }
+
+        peek(){
+            return this.stack[this.length-1]
+        }
+    }
+
+    var s1=new stack()
+
+    s1.push(1)
+
+    s1.push(2)
+
+    s1.push(3)
+
+    s1.push(4)
+
+    //peek syntax
+    //s1.pop()
+    
+    //console.log(s1)
+
+    console.log(s1.length);//length
+
+    //var inheritance=s1.values();
+
+    //console.log(inheritance.next().value);
+</script>

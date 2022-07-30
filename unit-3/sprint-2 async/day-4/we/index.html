@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-image: url("https://images.unsplash.com/photo-1656267125207-ff7e83430cc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDE0fGJvOGpRS1RhRTBZfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
+    }
+    input{
+        width: 500px;
+        height: 50px;
+
+    }
+    #movies{
+        width: 505px;
+        height: 500px;
+        border: 1px solid blue;
+        overflow-y: scroll;
+    }
+    .movies{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+    }
+    .movie img{
+        width: 100px;
+        height: 100px;
+    }
+</style>
+<body>
+    <h1>Closures</h1>
+    <input oninput="debounce(main,1000)" type="text" name="" id="query" placeholder="Search Movie">
+    <div id="movies"></div>
+
+
+
+
+</body>
+</html>
+<script src="index.js"></script>

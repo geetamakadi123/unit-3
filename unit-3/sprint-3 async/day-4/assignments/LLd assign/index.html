@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL TICKET BOOKING SYSTEM</title>
+    <style>
+        *{
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+           
+        }
+       
+      h1{
+        text-align: center;color: rgb(8, 8, 8);
+      }
+      #ticket_booking{
+        height:230px;width:30%;border:1px solid black;margin: auto;background-color: white;box-sizing: border-box;
+        padding-top: 15px;
+      }
+      select,input{
+        height:25px;width:90%;display: block;margin: auto;border-radius: 5px;margin-top: 10px;color:black;
+      }
+      button{
+        border:none;display: block;margin: auto;padding: 8px 19px; border:1px solid blue;font-size: 15px;
+        color:blue;background-color: white;margin-top: 15px;
+      }
+      button:hover{
+        background-color: blue;color:white;cursor: pointer;
+      }
+      #container>div{
+        height:400px;width:40%;border:1px solid black;margin: auto;
+        background-color: rgb(250, 248, 154);box-sizing: border-box;padding: 15px;
+      }
+
+    </style>
+</head>
+<body>
+     <h1>IPL TICKET BOOKING SYSTEM</h1>
+     <div id="ticket_booking">
+        <select name="category" id="category">
+            <option value="none">Select Category</option>
+            <option value="VVIP">VVIP</option>
+            <option value="VIP">VIP</option>
+            <option value="General">General</option>
+        </select>
+        <input type="text" id="name" placeholder="Name">
+        <select name="gender" id="gender">
+            <option value="none">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+            <input type="number" id="age" placeholder="Age">
+        </select>
+        <button onclick="submit()">Submit</button>
+  </div>
+  <hr>
+     <div id="container"></div>
+</body>
+</html>
+
+
+<script>
+  console.log("IPL TICKET BOOKING SYSTEM");
+//Person class creating
+class Person{
+    constructor(category,name,age,gender){
+        this._category= category;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+    get category(){
+        return this._category;
+    }
+    set category(value){
+        this._category = value;
+    }
+}
+// inheriteting properties for VVIPs,
+class VVIP extends Person{
+   constructor(name,age,gender){
+    super("VVIP",name,age,gender)
+   }
+}
+// creating class for VIPs
+class VIP extends Person{
+    constructor(name,age,gender){
+        super("VIP",name,age,gender)
+    }
+}
+// creating class for GENRALs
+class General extends Person{
+    constructor(name,age,gender){
+        super("General",name,age,gender)
+    }
+}
+// creting slot
+  class Slot{
+    constructor(category,number){
+        this.category = category;
+        this.number = number;
+        this._isBooked = false
+    }
+    get isBooked(){
+        return this._isBooked;
+    }
+    set isBooked(value){
+    this._isBooked = value;
+  }
+
+  }
+  // individual floor
+  class IndividualFloor{
+    constructor(floorNumber,maxSpots){
+        this.floorNumber=floorNumber;
+        this._diffSpots = [];
+        for(let i=0;i<maxSpots; i++){
+           if(i >= 0 && i <= 49){
+            this._diffSpots.push(new Slot("VVIP",i))
+           }else if(i >=50 && i <= 99){
+            this._diffSpots.push(new Slot("VIP",i))
+           }
+           else{
+            this._diffSpots.push(new Slot("General",i))
+           } 
+        }
+    }
+     get diffSpots(){
+        return this._diffSpots;
+     }
+ }
+ // IPT STADIUM //BUILDING
+   class Builidng{
+    constructor(number){
+        this._floors = [];
+        this._numberOfFloor = number;
+
+        for(let i = 0;i<number;i++){
+            this._floors.push(new IndividualFloor(i,100))
+        }
+    }
+   get numberOfFloor(){
+    return this._numberOfFloor;
+   }
+
+   get floors(){
+    return this._floors;
+   }
+   //after booking the vacant slot now the job is to deliver the ticket to buyers
+    sittingPerson(person){
+        let slot = this.findSlot(person.category)
+        if(slot){
+            this.bookSlot(slot);
+            let ticket = new Ticket(slot.floorNumber,slot.slot.number)
+           // console.log(ticket)
+           alert("Please Get your Ticket")
+           //////////
+            
+            let category = document.getElementById("category").value;
+            let name = document.getElementById("name").value;
+            let gender = document.getElementById("gender").value;
+            let age = document.getElementById("age").value;
+            getdetails(ticket,category,name,gender,age)
+            /////////
+        }
+        else{
+            //console.log("Slot no available")
+           alert("Sorry There is no slot available Now")
+            return false;
+        }
+    }
+    // finding vacant slot for all gategories
+    findSlot(category){
+
+        for(let i = 0;i<this._numberOfFloor;i++){
+            for(let slot of this._floors[i]._diffSpots){
+                if(slot.category==category && !slot.isBooked){
+                    return {floorNumber:i,slot:slot}
+                }
+            }
+        }
+        return false;
+    } 
+    // after finding the vacant slot now the job is to book the vacant slot
+    bookSlot(slot){
+        slot.slot.isBooked = true;
+       // console.log("Slot is booked")
+        return true;
+    }
+
+   }
+
+   class Ticket{
+    constructor(floorNumber,slotNumber){
+        this.floorNumber = floorNumber;
+        this.slotNumber = slotNumber;
+        this.day = new Date()
+    }
+   }
+   function submit(){
+    let category = document.getElementById("category").value;
+    let name = document.getElementById("name").value;
+    let gender = document.getElementById("gender").value;
+    let age = document.getElementById("age").value;
+    if(category ==="none"){
+        alert("Please select category")
+    }
+    else if(category=="VVIP"){
+        let vvip = new VVIP(name,age,gender,)
+        passToBuilding(vvip)
+        console.log("vvip")
+    }
+    else if(category=="VIP"){
+        let vip = new VIP(name,age,gender)
+        passToBuilding(vip)
+    console.log("vip")
+    }
+    else{
+        let general = new General(name,age,gender)
+        passToBuilding(general)
+        console.log("general")
+    }
+   }
+   let bl1 = new Builidng(3);
+   //console.log(bl1)
+   function passToBuilding(v){
+    bl1.sittingPerson(v)
+   }
+   let container = document.getElementById("container")
+  function getdetails(ticket,category,name,gender,age){
+    container.innerHTML= ""
+    let {floorNumber,slotNumber,day} = ticket;
+       let div = document.createElement("div");
+       let yourTicket = document.createElement("h2");
+       yourTicket.innerText="Your Ticket"
+       let fN = document.createElement("p");
+       fN.innerText = `Floor Number: ${floorNumber}`;
+       let sN = document.createElement("p");
+       sN.innerText = `Seat Number: ${slotNumber}`
+       let Day = document.createElement("p");
+       Day.innerText = `Date&Time: ${day}`;
+       let cat = document.createElement("p");
+       cat.innerText = `Category: ${category}`
+       let Name = document.createElement("h3");
+       Name.innerText = `Name: ${name}`
+       let Gen = document.createElement("p");
+       Gen.innerText = `Gender: ${gender}`
+       let Age = document.createElement("p");
+       Age.innerText=`Age: ${age}`
+       div.append(yourTicket,fN,sN,Day,cat,Name,Gen,Age);
+      container.append(div)  
+  }
+</script>

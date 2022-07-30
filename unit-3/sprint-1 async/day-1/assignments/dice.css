@@ -1,0 +1,62 @@
+body{
+    background: linear-gradient(to right, #3567, #fc4);
+}
+#winner{
+    text-align: center;
+    margin: auto;
+    font-size: 30px;
+}
+
+#member-1{
+    margin:0px;
+    font-size: 30px;
+    display: inline-block;
+    text-align: center;
+    margin-left: 310px;
+    margin-top: 100px;
+    height: 70px;
+    width:70px;
+    border: 1px solid rgb(23, 22, 22);
+    color: rgb(11, 9, 9);
+    border-radius: 10px;
+}
+
+#member-2{
+    margin:0px;
+   font-size: 30px;
+    display: inline-block;
+    text-align: center;
+    margin-left:310px;
+    margin-top: 100px;
+    height: 70px;
+    width:70px;
+    border: 1px solid rgb(23, 22, 22);
+    color: rgb(11, 9, 9);
+    border-radius: 10px;
+}
+
+#member-3{
+    margin:0px;
+    text-align: center;
+    display: inline-block;
+    font-size: 30px;
+    /* text-align: center; */
+    margin-left: 310px;
+    margin-top: 100px;
+    height: 70px;
+    width:70px;
+    border: 1px solid rgb(23, 22, 22);
+    color: rgb(11, 9, 9);
+    border-radius: 10px;
+}
+
+
+#roll{
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 10px;
+    color:red;
+    background-color: aliceblue;
+    padding:20px;
+}

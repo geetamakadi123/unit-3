@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    class IPLticket {
+        constructor(type, regnumber, ticketnumber) {
+            this._type = type;
+            this._regnumber = regnumber;
+            this._ticketnumber = ticketnumber;
+        }
+    
+        get type() {
+            return this._type;
+        }
+    
+        set type(value) {
+            this._type = value;
+        }
+    }
+    
+    //VIIP slots
+    
+    class VIIP extends IPLticket {
+        constructor(regnumber, ticketnumber) {
+            super("VIIP", regnumber, ticketnumber);
+        }
+    }
+    
+    // VIP slots
+    
+    class VIP extends IPLticket {
+        constructor(regnumber, ticketnumber) {
+            super("VIP", regnumber, ticketnumber);
+        }
+    }
+    
+    // General slots
+    
+    class General extends IPLticket {
+        constructor(regnumber, ticketnumber) {
+            super("General", regnumber, ticketnumber);
+        }
+    }
+    
+    // Seating Slots
+    
+    class Slot {
+        constructor(type, number) {
+            this.number = number;
+            this.type = type;
+            this._booked = false;
+        }
+    
+        get isBooked() {
+            return this._booked;
+        }
+    
+        set isBooked(value) {
+            this._booked = value;
+        }
+    }
+    
+    // Individual floors
+    
+    class SeatingFloor {
+        constructor(floorNumber, maxSpots) {
+            this.floorNumber = floorNumber;
+            this._seatingSpots = [];
+    
+            for (let i = 0; i < maxSpots; i++) {
+                if (i === 0) {
+                    //push top the slots
+                    this._seatingSpots.push(new Slot("VIIPs", i));
+                } else if (i === 1) {
+                    this._seatingSpots.push(new Slot("VIP", i));
+                } else {
+                    this._seatingSpots.push(new Slot("General", i));
+                }
+            }
+        }
+    
+        get seatingSpots() {
+            return this._seatingSpots;
+        }
+    }
+    
+    // building
+    
+    class SeatingLot {
+        constructor(number) {
+            this._floors = [];
+            this._numberOfFloors = number;
+    
+            for (let i = 0; i < number; i++) {
+                this._floors.push(new SeatingFloor(i, 3));
+            }
+        }
+    
+        get numberOfFloors() {
+            return this._numberOfFloors;
+        }
+    
+        get floors() {
+            return this._floors;
+        }
+    
+        PersonSeat(person) {
+            let slot = this.findSlot(person.type);
+    
+            if (slot) {
+                this.bookSlot(slot);
+                let ticket = new Ticket(slot.floorNumber, slot.slot.number);
+                console.log("Tiket: ", ticket);
+            } else {
+                console.log("No slots");
+                return false;
+            }
+        }
+    
+        findSlot(type) {
+            for (let i = 0; i < this._numberOfFloors; i++) {
+                for (let slot of this._floors[i]._seatingSpots) {
+                    if (slot.type === type && !slot.isBooked) {
+                        return { floorNumber: i, slot: slot };
+                    }
+                }
+            }
+    
+            return false;
+        }
+    
+        bookSlot(slot) {
+            slot.slot.isBooked = true;
+           // console.log("Slot is Booked");
+            return true;
+        }
+    }
+    
+    // Ticket
+    
+    class Ticket {
+        constructor(floorNumber, slotNumber) {
+            this.floorNumber = floorNumber;
+            this.slotNumber = slotNumber;
+            this.issuedAt = new Date();
+        }
+    }
+    
+    let b1 = new General("Mumbai_123456", "Yellow");
+    
+    let pl1 = new SeatingLot(3);
+    
+    pl1.PersonSeat(b1);
+    </script>

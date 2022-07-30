@@ -61,11 +61,11 @@ async function search(value)
 
           let data=await response.json()
           console.log(data.articles)
-
+          
           display(data.articles)
 
     }
-
+ 
     catch(err)
     {
         console.log(err)
@@ -127,7 +127,7 @@ async function search(value)
  }
 
 
- function buttonfn()
+ async function buttonfn()
  {
     search(this.id)
 

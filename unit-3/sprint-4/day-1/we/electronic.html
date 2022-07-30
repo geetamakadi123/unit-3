@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+    
+
+    
+    <div id="navbar">
+        <!-- <h3>
+            <a href="/">Home</a>
+        </h3>
+        <div id="option">
+        <h3>
+            <a href="electronic.html">electronic</a>
+        </h3>
+        <h3>
+            <a href="jewelery.html">jewelery</a>
+        </h3>
+        <h3>
+            <a href="#">login</a>
+        </h3>
+        <h3>
+            <a href="#">signup</a>
+        </h3>
+    </div> -->
+    </div>
+    <h1>electronics</h1>
+    <div id="container"></div>
+ 
+</body>
+</html>
+<script type="module">
+    import navbar from "./components/navbar.js"
+
+document.getElementById("navbar").innerHTML=navbar()
+
+// let getData =async () =>{
+
+// let res= await fetch("https://fakestoreapi.com/products/category/electronics");
+
+// let data= await res.json()
+
+// append(data)
+// //console.log(data)
+
+// }
+
+// getData();
+
+
+// let append= (data) => {
+
+// let container = document.getElementById("container")
+
+// data.forEach((el)=>{
+// let mamta=document.createElement("div")
+//     let p=document.createElement("p")
+
+//     let img=document.createElement("img")
+
+
+//     p.innerText=el.title;
+
+
+//     img.src=el.image
+
+
+// mamta.append(img,p)
+
+// container.append(mamta)
+
+
+// })
+
+import {getData,append} from "./script/appendFetch.js"
+
+//console.log(getData,append)
+
+let url="https://fakestoreapi.com/products/category/electronics"
+//let container = document.getElementById("container")
+
+let data= await getData(url)
+
+let cont=document.getElementById("container")
+
+append(data,cont)
+
+
+
+// }
+
+   // console.log(navbar)
+</script>
+
+<!-- 'https://fakestoreapi.com/products/category/jewelery'
+
+-->
+
+<!-- https://fakestoreapi.com/products/category/electronics -->
+
+
+<!-- https://fakestoreapi.com/products/category/jewelery -->

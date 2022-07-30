@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div id="mamta"></div>  
+</body>
+</html>
+<script>
+
+
+    var video=JSON.parse(localStorage.getItem("video"))
+
+    let div=document.createElement("div")
+
+   let iframe =document.createElement("iframe")
+
+     iframe.src=`https://www.youtube.com/embed/nBk7SIMIg7A/${video.videoId}`
+
+
+
+     iframe.allow="fullscreen"
+     let h3=document.createElement("h3")
+
+     h3.innerText=video.title;
+
+     
+
+     div.append(iframe,h3)
+
+    let mamta=document.getElementById("mamta")
+
+    mamta.append(div)
+
+
+</script>

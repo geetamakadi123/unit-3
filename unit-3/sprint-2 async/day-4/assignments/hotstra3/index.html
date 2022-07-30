@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>hotstar3</title>
+    <style>
+       
+        img{
+            height:300px;
+            width:100%;
+           
+        }
+        #mid{
+            height:470px;
+            width:350px;
+        }
+
+
+
+        #container{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: auto;
+            margin: auto;
+            gap:20px;
+        }
+        h2{
+            color: black;
+            font-size: 25px;
+            text-align: center;
+            /* margin-left:350px;; */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 >
+        Trending Movies</h2>
+    <div id="container"></div>
+
+</body>
+
+</html>
+
+<script>
+//https://api.themoviedb.org/3/movie/550?api_key=bc16ec05c7178001545b40b4dadcc661
+    async function searchingData() {
+
+        const url = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=bc16ec05c7178001545b40b4dadcc661`;
+
+        let res = await fetch(url);
+        let data = await res.json();
+
+        console.log(data.results);
+        append(data.results);
+    };
+
+    searchingData();
+
+    function append(data) {
+
+        let container = document.querySelector('#container');
+
+        data.forEach(function (el) {
+
+            
+
+            let img = document.createElement('img');
+            img.src = `https://image.tmdb.org/t/p/original/${el.poster_path}`;
+
+
+            let title = document.createElement('h5');
+            title.innerText = el.title;
+
+            let release = document.createElement('p');
+            release.innerText = 'Release date: ' + el.release_date;
+
+            let popularity = document.createElement('p');
+            popularity.innerText = ' imdp Rating: ' + el.popularity;
+
+            
+            let box = document.createElement('div');
+            box.setAttribute("id","mid")
+            box.style.border = '1px solid red';
+             box.append( img,title, release, popularity,);
+
+            container.append(box);
+
+        });
+
+    };
+
+</script> 

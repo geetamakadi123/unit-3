@@ -1,0 +1,74 @@
+#navbar{
+    display: flex;
+    justify-content: space-between;
+border: 1px solid rgb(128, 0, 70);
+
+background-color: rgb(164, 252, 247);
+
+
+padding: 20px;
+
+
+
+}
+
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+
+      margin-left: 100px;
+
+    gap: 20px;
+    
+}
+#result{
+    margin-top: 30px;
+   
+    font-size-adjust: 0.58;
+    
+   
+}
+
+   
+#dayofweek{
+    text-size-adjust: 40px;
+
+    
+}
+
+
+
+#option{
+    display: flex;
+    gap: 20px;
+    
+}
+
+
+bigdata{
+    margin: auto;
+
+}
+
+#container,img{
+    height:500px;
+
+    width: 400px;
+}
+
+input{
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    width: 30%;
+    margin-top: 20px;
+
+    height: 20px;
+
+    
+}
+a{
+    text-decoration: none;
+    color: black;
+}

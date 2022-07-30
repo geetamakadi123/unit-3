@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+var img=document.createElement("img")
+
+
+
+    function status(){
+        // return true;
+        return false;
+    }
+
+var pp=new Promise(function(resolve,reject){
+    var time=(Math.random()*10000)+3000;
+   var news=status()
+   img.src= "https://c.tenor.com/K2UGDd4acJUAAAAM/load-loading.gif"
+   document.querySelector("body").append(img)
+   setTimeout(function(){
+   if(news){
+            resolve("succesful")
+        }
+        else{
+            reject("not succesful")
+        }
+    },time)
+})
+
+
+
+async function check(){
+    try{
+        var res=await pp;
+        console.log(res)
+         img.src="https://c.tenor.com/xVfFIHxAzW4AAAAC/success.gif"
+        document.querySelector("body").append(img)
+    }
+    catch(err){
+        console.log(err)
+        // img.src=""
+        // document.querySelector("body").append(img)  
+    }
+
+}
+check()
+</script>

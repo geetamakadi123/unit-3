@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+       #images{
+          height:400px;
+          width:1370px;
+
+       }
+       #query{
+           margin-left: 550px;
+          overflow-y: scroll;
+       }
+       #names{
+           margin-left: 550px;
+           
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+<img id="images" src="" alt=""/>
+    <input type="text" id="query" oninput="debouncing(main,1000)"/>
+    <div id="results">
+
+    </div>
+</body>
+</html>
+<script src="index.js"></script>

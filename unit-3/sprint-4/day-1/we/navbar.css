@@ -1,0 +1,22 @@
+#navbar{
+    display: flex;
+    justify-content: space-between;
+border: 1px solid teal;
+padding: 10px;
+
+}
+#option{
+    display: flex;
+    gap: 20px;
+}
+#container{
+    display: flex;
+
+    
+}
+
+#container,img{
+    height:500px;
+
+    width: 400px;
+}

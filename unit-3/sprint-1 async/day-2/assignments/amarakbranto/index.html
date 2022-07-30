@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h1>Borrow A Talent</h1>
+   <h2>Amar</h2>
+    <h2>Akbar</h2>
+    <h2>Anthony</h2>
+</body>
+</html>
+
+<script >
+    
+
+let Amar={
+    talent:"singing",
+    work:function(){
+        console.log(this.talent)
+    },
+};
+
+let Akbar={
+    talent:"cooking",
+    work:function(){
+        console.log(this.talent)
+    },
+};
+
+let Anthony={
+    talent:"magician",
+    work:function(){
+        console.log(this.talent)
+    },
+};
+
+
+Akbar.work.call(Amar);
+
+Amar.work.call(Akbar);
+
+Akbar.work.call(Anthony);
+
+Anthony.work.call(Akbar);
+
+Amar.work.call(Anthony);
+
+Akbar.work.call(Amar);
+</script>

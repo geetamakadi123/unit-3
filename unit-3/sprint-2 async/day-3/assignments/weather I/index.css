@@ -1,0 +1,50 @@
+
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    width: 25%;
+    margin: auto;
+    color: antiquewhite;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    
+    background-color: rgb(142, 211, 142);
+    text-align: center;
+    border-radius: 10px;
+    gap: 30px;
+}
+ 
+#city{
+    margin-top: 20%;
+    height: 30px;
+    width: 40%;
+    border-radius: 3px;
+    border: 0;
+    margin-left: -270px;
+ }
+    
+#searc{
+    display: flex;
+      width: 30%;
+       margin: auto;
+      gap: 25px;
+      
+      
+  }
+
+#search{
+    margin-top: 20%;
+  height: 30px;
+   width: 23%;  
+   border-radius: 5px;
+   border: 0;
+   color: rgb(8, 8, 8);
+}    
+h1{ 
+    
+    text-align: center;
+    color: rgb(128, 62, 0);
+    margin-bottom: 10px;
+}

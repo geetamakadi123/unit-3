@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="submitProduct(event)" id="products" >
+        <input type="text" placeholder="Product name" id="name">
+        <input type="text" placeholder="Category" id="category">
+        <input type="url" placeholder="Image url" id="image">
+        <input type="number" placeholder="Price" id="price">
+
+        <select id="gender">
+            <option value="male" id="male"> M</option>
+            <option value="female" id="female">F</option>
+        </select>
+
+        <select id="sold">
+            <option value="false" id="false"> FALSE</option>
+            <option value="true" id="true">TRUE</option>
+        </select>
+        <input type="submit" id="add"/>
+</form>
+</body>
+</html>
+<script>
+    
+function Product(name,category,image,price,gender,sold){
+  this.name= name;
+  this.category = category;
+  this.image = image;
+  this.price = price;
+  this.gender = gender;
+  this.sold = sold;
+}
+
+let arr=JSON.parse(localStorage.getItem("Products")) || []
+function submitProduct(event){
+  event.preventDefault();
+
+  let form = document.getElementById("products");
+  let name = products.name.value
+  let category = products.image.value;
+  let image = document.createElement("image");
+  image.src = products.image.value;
+  let price = products.price.value;
+  let gender = products.gender.value;
+  let sold = products.sold.value;
+
+  var p = new Product(name,category,image,price,gender,sold)
+  arr.push(p)
+  console.log(p)
+  localStorage.setItem("Product",JSON.stringify(arr))
+}
+
+</script>

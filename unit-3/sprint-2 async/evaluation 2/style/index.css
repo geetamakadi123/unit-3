@@ -1,0 +1,32 @@
+#navbar{
+    display:flex;
+
+    justify-content: flex-end;
+
+    border: 1px solid rgb(48, 53, 53);
+
+    background-color: blueviolet;
+
+    color: white;
+
+    font-size: 20px;
+
+    gap: 30px;
+
+
+}
+
+#groceries{
+    display: grid;
+
+    grid-template-columns: repeat(4,auto);
+
+    gap: 90px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+img{
+    height: 300px;
+
+    width: 300px;
+}

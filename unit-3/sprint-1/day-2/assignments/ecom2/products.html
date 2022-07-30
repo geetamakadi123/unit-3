@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .counter{
+            /* width: 90%; */
+            margin: auto;
+           display: grid;
+           grid-template-columns: repeat(4,1fr);
+           grid-auto-rows: auto;
+           gap: 10px;
+        }
+        .card{
+            text-align: center;
+        }
+        .card>img{
+                width:100%;
+                /* background-color: red;
+                border: 1mm solid red; */
+        }
+        .card>h2{
+            text-align: center;
+            height: 40px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow:ellipsis;
+            width: 90%;
+        }
+        .buttons{
+            /* border: 1mm solid black; */
+            justify-content: space-around;
+            display: flex;
+           
+        }
+        .buttons>button:nth-of-type(1){
+            color: red;
+            width: 20%;
+            height: 20px;
+        }
+        .buttons>button:nth-of-type(2){
+            /* color: red; */
+            width: 20%;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+<div class="counter">
+
+</div>
+
+
+
+</body>
+</html>
+<script >
+var data= JSON.parse(localStorage.getItem("Products"))||[];
+// console.log(products)
+display(data);
+
+function display(products){
+    var box=document.querySelector(".counter").innerHTML="";
+    products.forEach(function(elem,i){
+        var box=document.querySelector(".counter");
+        var div1=document.createElement("div");
+        div1.setAttribute("class","card")
+
+        var image=document.createElement("img");
+        image.setAttribute("src",elem.image)
+
+        let name=document.createElement("h2");
+        name.innerText=elem.name;
+
+
+        var price=document.createElement("p");
+        price.innerText=elem.price;
+        var div2=document.createElement("div");
+        div2.setAttribute("class","buttons")
+        var btn1=document.createElement("button");
+        btn1.innerText="Remove"
+         btn1.addEventListener("click",function(){
+             deletefun(elem,i)
+         })   
+        var btn2=document.createElement("button");
+        btn2.innerText="Sold"
+        
+        btn2.addEventListener("click",function(){
+          soldfun(elem,i,btn2);
+         }) 
+         if(elem.sold=="false")
+        {
+            btn2.style.color="red"
+        }
+        else if(elem.sold=="true")
+        {
+            btn2.style.color="green"
+        }  
+         div2.append(btn1,btn2)
+        div1.append(image,name,price,div2);
+      box.append(div1)
+        
+    })
+}
+var soldcount=false;
+function deletefun(elem,i){
+    
+    data.splice(i,1)
+      localStorage.setItem("Products",JSON.stringify(data));
+      window.location.reload();
+}
+
+function soldfun(elem,i,btn2){
+    
+   
+    if(elem.sold=="false"){
+        elem.sold="true";
+        btn2.style.color="green"
+        // console.log(el)
+
+    }
+   else if(el.sold=="true"){
+    elem.sold="false";
+    btn2.style.color="red"
+//    console.log(el)
+   
+  
+
+    
+   }
+  
+}
+</script>
